@@ -1,4 +1,4 @@
-module.exports = "Phrase;"
+module.exports = Phrase;
 
 // Adds 'reverse' to all strings.
 String.prototype.reverse = function() {
@@ -15,7 +15,18 @@ function Phrase(content) {
   // }
 
   this.processedContent = function processedContent() {
-    return this.content.toLowerCase();
+    return this.letters().toLowerCase();
+  }
+
+  // Returns the letters in the content.
+  this.letters = function letters() {
+    let theLetters = [];
+    for (let i = 0; i < this.content.length; i++) {
+      if (this.content.charAt(i).match(/[a-zA-Z]/)) {
+        theLetters.push(this.content.charAt(i));
+      }
+    }
+    return theLetters.join("");
   }
 
   // Returns true for a palindrome, false otherwise.
